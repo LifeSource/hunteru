@@ -1,0 +1,19 @@
+{
+  "name": "hunteru",
+  "version": "1.0.0",
+  "authors": [
+    "Kenrick Wu <kenrick.wu@gmail.com>"
+  ],
+  "keywords": [
+    "hunter",
+    "nen"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

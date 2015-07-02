@@ -1,0 +1,15 @@
+{
+  "name": "hunteru",
+  "version": "1.0.0",
+  "description": "A simple application for the top secret hunter organisation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hunter",
+    "nen"
+  ],
+  "author": "Kenrick Wu",
+  "license": "ISC"
+}
