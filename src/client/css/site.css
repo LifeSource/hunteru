@@ -1,0 +1,85 @@
+header {
+  height: 155px;
+  background: #333;
+  color: #fff;
+}
+header img {
+  padding-left: 20px;
+  padding-top: 15px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+footer {
+  text-align: center;
+  background: #ccc;
+  color: #333;
+  width: 100%;
+  position: fixed;
+  height: 20px;
+  bottom: 0px;
+}
+.htr-menu-area {
+  position: relative;
+  background: #333;
+  color: #ccc;
+  width: 200px;
+  min-height: 100vh;
+  float: left;
+  padding-left: 0px;
+  padding-top: 30px;
+}
+.htr-menu-area ul {
+  padding-left: 0px;
+}
+.htr-menu {
+  list-style: none;
+  vertical-align: top;
+}
+.htr-menu ul {
+  display: inline;
+  list-style-type: none;
+  padding-left: 0;
+}
+.htr-menu li {
+  cusor: pointer;
+  line-height: 3em;
+}
+.htr-menu-item:hover {
+  background-color: #44b7ec;
+}
+.htr-menu-item div {
+  display: inline-block;
+  width: 90%;
+  padding-left: 16px;
+}
+.htr-menu-icon {
+  margin-right: 10px;
+}
+.htr-main-content {
+  height: 100vh;
+  background: #555;
+  color: #eee;
+}
+.htr-hunter-list ul {
+  list-style: none;
+}
+.htr-hunter-list li {
+  list-style-type: none;
+  margin: 25px;
+}
+.htr-hunter-card {
+  float: left;
+  width: 120px;
+  height: 120px;
+  background-color: #ff0;
+}
+.htr-hunter-card span {
+  float: right;
+}

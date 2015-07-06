@@ -1,0 +1,10 @@
+<div class="htr-menu-area" data-ng-controller="SideBar as vm">
+	<ul class="htr-menu">
+		<li class="htr-menu-item" data-ng-repeat="item in vm.menuItems">
+			<div>
+				<i class="htr-menu-icon fa {{ item.icon }}"></i>
+				<a href="#/{{item.label}}">{{ item.label }}</a>
+				</div>
+		</li>
+	</ul>
+</div>
