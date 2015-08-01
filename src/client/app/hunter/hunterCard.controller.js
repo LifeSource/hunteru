@@ -3,7 +3,7 @@
 	
 	angular
 		.module("app.hunters")
-		.controller("HunterCardController" [HunterCardController]);
+		.controller("HunterCardController", [HunterCardController]);
 	
 	function HunterCardController() {
 		

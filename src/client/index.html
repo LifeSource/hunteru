@@ -7,6 +7,7 @@
         <!-- bower:css -->
         <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="../../bower_components/toastr/toastr.css" />
         <!-- endbower -->
         <!-- inject:css -->
         <link rel="stylesheet" href="/src/client/css/site.css">
@@ -15,9 +16,14 @@
     
     <body>
         
-        <div>
-            <div data-ng-include="'app/layout/shell.html'"></div>
-            <div data-ui-view></div>
+        <div class="htr-container">
+            <header>
+                <div ng-include="'app/layout/topnav.html'"></div>
+            </header>
+            <section  class="htr-main-content" >
+                <div data-ui-view></div>
+            </section>
+            <footer>Hunteru @ 2015</footer>
         </div>
         
         <!-- bower:js -->
@@ -27,6 +33,7 @@
         <script src="../../bower_components/ui-router/release/angular-ui-router.js"></script>
         <script src="../../bower_components/angular-resource/angular-resource.js"></script>
         <script src="../../bower_components/angular-animate/angular-animate.js"></script>
+        <script src="../../bower_components/toastr/toastr.js"></script>
         <!-- endbower -->
         <!-- inject:js -->
         <script src="/src/client/app/app.module.js"></script>
@@ -34,14 +41,18 @@
         <script src="/src/client/app/core/core.module.js"></script>
         <script src="/src/client/app/hunter/hunter.module.js"></script>
         <script src="/src/client/app/layout/layout.module.js"></script>
-        <script src="/src/client/app/common/config.js"></script>
+        <script src="/src/client/app/core/config.js"></script>
+        <script src="/src/client/app/core/constants.js"></script>
+        <script src="/src/client/app/core/dataService.service.js"></script>
         <script src="/src/client/app/core/routes.js"></script>
         <script src="/src/client/app/hunter/hunter.service.js"></script>
+        <script src="/src/client/app/hunter/hunterCard.controller.js"></script>
         <script src="/src/client/app/hunter/hunterCard.directive.js"></script>
-        <script src="/src/client/app/hunter/hunterCardController.js"></script>
-        <script src="/src/client/app/hunter/hunterListController.js"></script>
-        <script src="/src/client/app/layout/shell.js"></script>
-        <script src="/src/client/app/layout/sidebar.js"></script>
+        <script src="/src/client/app/hunter/hunterInfo.controller.js"></script>
+        <script src="/src/client/app/hunter/hunterList.controller.js"></script>
+        <script src="/src/client/app/layout/htrMenuItem.directive.js"></script>
+        <script src="/src/client/app/layout/sidebar.controller.js"></script>
+        <script src="/src/client/app/layout/topnav.controller.js"></script>
         <!-- endinject -->
     </body>
 

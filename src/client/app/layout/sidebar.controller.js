@@ -2,9 +2,10 @@
 	"use strict";
 	angular
 		.module("app.layout")
-		.controller("SideBar", [SideBar]);
+		.controller("SideBarController", [SideBarController]);
 		
-	function SideBar() {
+	function SideBarController() {
+		
 		var vm = this;
 		
 		vm.menuItems = [

@@ -1,81 +1,102 @@
 coolBlue = #44b7ec
+enhancement = #f9bb43
+emission = #9cd1ec
+transmutation = #1dd4db
+conjuration = #fcfc37
+manipulation = #842aa9
+specialization = #de64e6
 
-header
-	height 155px
-	background #333
-	color #fff
-
-header img
-	padding-left 20px
-	padding-top 15px
-
-h1, h2, ,h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6
 	padding 0
 	margin 0
 
-footer
-	text-align center
-	background #ccc
-	color #333
-	width 100%
-	position fixed
-	height 20px
-	bottom 0px
-	
-.htr-menu-area
-	position relative
-	background #333
-	color #ccc
-	width 200px
-	min-height 100vh
-	float left
-	padding-left 0px
-	padding-top 30px
-	
-.htr-menu-area ul
-	padding-left 0px
-	
-.htr-menu
-	list-style none
-	vertical-align top
-	
-.htr-menu ul
-	display inline
-	list-style-type none
-	padding-left 0
-	
-.htr-menu li
-	cusor pointer
-	line-height 3em
-	
-.htr-menu-item:hover
-	background-color coolBlue
-	
-.htr-menu-item div
-	display inline-block
-	width 90%
-	padding-left 16px
-	
-.htr-menu-icon
-	margin-right 10px
-	
-.htr-main-content
-	height 100vh
+header
+	height 100px
 	background #555
-	color #eee
 
-.htr-hunter-list ul
+header img
+	display block
+	margin 0 auto
+
+footer
+	clear both
+	color #eee
+	background #555
+	text-align center
+	
+.htr-main-heading
+	padding 10px 20px
+	color #eee
+	
+.htr-nav-list
+	padding 0
+	margin 0
+	list-style none
+
+.htr-nav-list li
+	float left
+	display inline
+	margin-right 20px
+	font-size 20px
+	
+.htr-hunter-list
 	list-style none
 
 .htr-hunter-list li
 	list-style-type none
-	margin 25px
-	
+	display inline	
+	float left
+
 .htr-hunter-card
+	margin 20px
+	width 120px
+	height 120px
+
+.htr-hunter-card img
+	border-radius 60px
+	perspective 700
+	transition all 0.6s ease
+
+.htr-hunter-card img:hover
+	opacity 0.6
+	border 3px groove red
+	transform rotateY(180deg)
+
+.htr-hunter-card span
+	display block
+	text-align center
+
+.htr-nen-list
+	list-style none
+	
+.htr-nen-list li
+	display inline
 	float left
 	width 120px
 	height 120px
-	background-color yellow
+	border-radius 75px
+	border 1px solid black
+	text-align center
+	margin-right 20px
+	
+.htr-abilities
+	margin 0
+	padding 0
+	list-style none
+	
+.htr-abilities li
+	margin 0
+	padding 10px 0
+	list-style-type none
+	
+.htr-nen-type
+	margin 0 auto	
+	
+.htr-nen
+	position relative
+	top 50px
 
-.htr-hunter-card span
-	float right
+.panel-primary {
+	margin-top: 20px;
+}
+

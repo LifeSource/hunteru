@@ -1,6 +1,4 @@
 (function () {
 	"use strict";
-	
-	angular.module("app.hunters", []);
-	
+	angular.module("app.hunters", ["app.core"]);
 })();

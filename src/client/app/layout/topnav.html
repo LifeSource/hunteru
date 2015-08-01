@@ -1,0 +1,16 @@
+<nav class="htr-top-nav">
+	<div>
+		<h1 class="htr-main-heading">Hunteru</h1>
+	</div>
+	<div data-ng-controller="TopNavigationController as vm">
+		<ul class="htr-nav-list">
+			<li data-ng-repeat="nav in vm.navLinks">
+				<a data-ui-sref="{{ nav.state }}">{{ nav.label }}</a>
+			</li>
+		</ul>
+		
+		<div class="col-md-2">
+			<input type="text" placeholder="Search hunter by name..." class="form-control">
+		</div>
+	</div>
+</nav>

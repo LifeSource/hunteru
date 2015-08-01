@@ -12,6 +12,7 @@ gulp.task("lint", function () {
 
 	return gulp.src(config.allJs)
 			.pipe($.if(args.verbose, $.print()))
+			.pipe($.plumber())
 			.pipe($.jshint())
 			.pipe($.jshint.reporter("jshint-stylish", { verbose: true }))
 			.pipe($.jshint.reporter("fail"));

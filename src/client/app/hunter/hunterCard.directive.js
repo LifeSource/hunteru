@@ -9,9 +9,7 @@
 		
 		var directive = {
 			restrict: "AE",
-			templateUrl: "app/hunter/hunterCardTemplate.html",
-			controller: function(){}
-	//		controller: "HunterCardController as vm"
+			templateUrl: "app/hunter/hunterCardTemplate.html"
 		};
 		
 		return directive;

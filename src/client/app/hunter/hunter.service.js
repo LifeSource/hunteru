@@ -1,7 +1,8 @@
+/// <reference path="../../../../typings/angularjs/angular.d.ts"/>
 (function(){
 	"use strict";
 	angular
-		.module("app.common")
+		.module("app.hunters")
 		.factory("hunterService", ["$http", hunterService]);
 	
 	function hunterService($http) {

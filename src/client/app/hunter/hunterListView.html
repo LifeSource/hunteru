@@ -1,8 +1,7 @@
-<div class="htr-hunter-list">
-	<h1>Hunter List</h1>
-	<ul>
-		<li class="htr-hunter-card" ng-repeat="hunter in vm.hunters">
-			<htr-hunter-card name="vm.hunter.first"></htr-hunter-card>
-		</li>
-	</ul>
-</div>
+<ul class="htr-hunter-list">
+	<li class="htr-hunter-card" ng-repeat="hunter in vm.hunters">
+		<a data-ui-sref="info({ hunterId: hunter._id })">
+			<htr-hunter-card></htr-hunter-card>
+		</a>
+	</li>
+</ul>
