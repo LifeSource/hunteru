@@ -1,20 +1,27 @@
-(function(){
-	"use strict";
-	
-	angular
-		.module("app.hunters")
-		.controller("HunterListController", HunterListController);
-		
-	HunterListController.$inject = ["hunterService"];
-		
-	function HunterListController(hunterService) {
-		
-		var vm = this;
-		vm.hunters = [];
-		
-		hunterService.getHunters().then(function(data) {
-			vm.hunters = data;
-		});		
-	}
-	
+(function() {
+    "use strict";
+
+    angular
+        .module("app.hunter")
+        .controller("HunterListController", HunterListController);
+
+    HunterListController.$inject = ["hunterService", "toastr"];
+
+    function HunterListController(hunterService, toastr) {
+        var vm = this;
+        vm.hunters = [];
+
+        hunterService.query()
+            .then(success)
+            .catch(fail);
+
+        function success(data) {
+            vm.hunters = data;
+        }
+
+        function fail(reason) {
+            toastr.error("Failed to retrieve hunters. ", reason);
+        }
+    }
+
 })();

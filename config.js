@@ -1,69 +1,96 @@
-/// <reference path="typings/node/node.d.ts"/>
 module.exports = function () {
-	
-	var env = process.env.NODE_ENV || "dev",
-		port = process.env.PORT || 3000,
-		db = {
-			development: {
-				port: process.env.PORT || 27017,
-				connectionString: "mongodb://localhost:27017/hunteru"
-			},
-			production: {
-				port: process.env.PORT || 80,
-				connectionString: "mongodb://localhost:27017/hunteru"
-			}	
-		},
-		root = "./",
-		src = root + "src/",
-		server = src + "server/",
-		client = src + "client/",
-		clientApp = client + "app/",
-		css = client + "css/",
-		stylus = client + "styles/",
-		nodeModules = root + "node_modules/",
-		bowerComponents = root + "bower_components/",
-		ignore = [nodeModules + "**/*.*", bowerComponents + "**/*.*"];
 
-	var config = {
-		env: env,
-		port: port,
-		db: db,
-		root: root,
-		src: src,
-		server: server,
-		nodeServer: server + "app.js",
-		client: client,
-		clientApp: clientApp,
-		css: css,
-		styles: stylus + "site.styl",
-		index: client + "index.html",
-		allJs: [
-			client + "**/*.js",
-			root + "/*.js",
-			"!" + ignore
-		],
-		js: [
-			client + "**/*.module.js",
-			clientApp + "**/*.js",
-			client + "**/*.js"
-		],
-		bower: {
-			json: root + "bower.json",
-			directory: bowerComponents,
-			ignore: "../.."
-		},
-		browserReloadDelay: 1000
-	};
+    var port = process.env.PORT || 3000,
+        env = process.env.NODE_ENV || "dev";
 
-	config.getWiredepDefaultOptions = function () {
-		var options = {
-			json: config.bower.json,
-			directory: config.bower.directory,
-			ignore: config.bower.ignore
-		};
+    var root = "./",
+        src = root + "src/",
+        client = src + "client/",
+        clientApp = client + "app/",
+        css = client + "css/",
+        styles = client + "styles/",
+        images = client + "images/",
+        server = src + "server/",
+        build = root + "build/",
+        temp = root + "temp/",
+        nodeModules = root + "node_modules/",
+        bowerComponents = root + "bower_components/",
+        ignore = [nodeModules, bowerComponents];
 
-		return options;
-	};
+    var config = {
+        // Environment
+        env: env,
+        port: port,
+        // Paths
+        root: root,
+        src: src,
+        temp: temp,
+        build: build,
+        css: css,
+        fonts: bowerComponents + "font-awesome/fonts/**/*.*",
+        html: clientApp + "**/*.html",
+        htmlTemplates: clientApp + "**/*.html",
+        images: images + "**/*.*",
+        client: client,
+        clientApp: clientApp,
+        styles: styles + "**/*.styl",
+        server: server,
+        // Files
+        nodeServer: server + "server.js",
+        index: client + "index.html",
+        siteCss: css + "site.css",
+        // JavaScripts
+        allJs: [
+            clientApp + "**/*.js",
+            client + "**/*.js",
+            root + "*.js"
+        ],
+        js: [
+            clientApp + "**/*.module.js",
+            clientApp + "**/*.service.js",
+            clientApp + "**/*.js",
+            client + "**/*.js",
+        ],
+        // Optimized files
+        optimized: {
+            app: "app.js",
+            lib: "lib.js"
+        },
+        // Template Cache
+        templateCache: {
+            file: "templates.js",
+            options: {
+                module: "app.core",
+                standAlone: false,
+                root: "app/"
+            }
+        },
+        // Bower and NPM
+        nodeModules: nodeModules,
+        bowerComponents: bowerComponents,
+        bower: {
+            json: root + "bower.json",
+            directory: bowerComponents,
+            ignorePath: "../.."
+        },
+        packages: [
+            "./package.json",
+            "./bower.json"
+        ],
+        // Browser Sync
+        browserReloadDelay: 1000
+    };
 
-	return config;
+    config.getWiredepDefaultOptions = function () {
+        var options = {
+            json: config.bower.json,
+            directory: config.bower.directory,
+            ignorePath: config.bower.ignorePath
+        };
+
+        return options;
+    };
+
+    return config;
 };
+

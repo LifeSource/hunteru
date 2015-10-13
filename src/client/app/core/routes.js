@@ -4,8 +4,10 @@
 	
 	angular
 		.module("app.core")
-		.config(["$stateProvider", "$urlRouterProvider", routes]);
+		.config(routes);
 		
+	routes.$inject = ["$stateProvider", "$urlRouterProvider"];
+	
 	function routes($stateProvider, $urlRouterProvider) {
 		
 		$urlRouterProvider.otherwise("/");
@@ -23,6 +25,12 @@
 				controller: "HunterListController",
 				controllerAs: "vm"
 			})
+			.state("newHunter", {
+				url: "/hunters/new",
+				templateUrl: "app/hunter/hunterEdit.html",
+				controller: "HunterEditController",
+				controllerAs: "vm"	
+			})
 			.state("info", {
 				url: "/hunters/:hunterId",
 				templateUrl: "app/hunter/hunterInfoView.html",
@@ -31,7 +39,7 @@
 					hunterService: "hunterService",
 					hunter: function(hunterService, $stateParams) {
 						var hunterId = $stateParams.hunterId;
-						return hunterService.getHunter(hunterId);
+						return hunterService.get(hunterId);
 					}
 				}
 			});			

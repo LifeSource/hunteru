@@ -4,7 +4,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="col-md-3">
-					<img ng-src="images/thumbnail/{{ vm.hunter.name.first }}.png" alt="">
+					<img data-ng-src="images/thumbnail/{{ vm.hunter.name.first }}.png" alt="">
 					<div>
 						<strong>Name:</strong>
 						<span>{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</span>
@@ -20,12 +20,12 @@
 					</div>
 				</div>
 				<div class="col-md-5">
-					<h4>Background</h4>
+					<h4 class="sub-heading">Background</h4>
 					<br />
 					<p>{{ vm.hunter.bio }}</p>
 				</div>
 				<div class="col-md-4">
-					<h4>Abilities</h4>
+					<h4 class="sub-heading">Abilities</h4>
 					<br />
 					<ul class="htr-abilities">
 						<li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>

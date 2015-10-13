@@ -16,6 +16,9 @@ module.exports = function(app) {
 					res.json(hunters);
 				}
 			});
+		})
+		.post(function(req, res) {
+			res.status(200).send("Posted successfully!");	
 		});
 		
 	hunterRouter.route("/:hunterId")
@@ -28,6 +31,8 @@ module.exports = function(app) {
 				}	
 			});
 		});
+		
+	
 		
 	app.use("/api/hunters/", hunterRouter);
 };

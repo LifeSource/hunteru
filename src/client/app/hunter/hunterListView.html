@@ -1,7 +1,18 @@
+<div class="container">
+    <div class="row">
+        <form class="form-inline">
+            <div class="form-group">
+				<div class="col-md-6">
+				</div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <ul class="htr-hunter-list">
-	<li class="htr-hunter-card" ng-repeat="hunter in vm.hunters">
-		<a data-ui-sref="info({ hunterId: hunter._id })">
-			<htr-hunter-card></htr-hunter-card>
-		</a>
-	</li>
+    <li class="htr-hunter-card" ng-repeat="hunter in vm.hunters">
+        <a data-ui-sref="info({ hunterId: hunter._id })">
+            <htr-hunter-card></htr-hunter-card>
+        </a>
+    </li>
 </ul>

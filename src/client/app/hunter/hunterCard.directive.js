@@ -2,14 +2,16 @@
 	"use strict";
 	
 	angular
-		.module("app.hunters")
-		.directive("htrHunterCard", [htrHunterCard]);
+		.module("app.hunter")
+		.directive("htrHunterCard", htrHunterCard);
 	
+    htrHunterCard.$inject = [];
+
 	function htrHunterCard() {
 		
 		var directive = {
 			restrict: "AE",
-			templateUrl: "app/hunter/hunterCardTemplate.html"
+			templateUrl: "app/hunter/hunterCard.template.html"
 		};
 		
 		return directive;

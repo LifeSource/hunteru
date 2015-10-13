@@ -1,4 +1,4 @@
 (function () {
 	"use strict";
-	angular.module("app.hunters", ["app.core"]);
+	angular.module("app.hunter", ["app.core"]);
 })();

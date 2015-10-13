@@ -2,7 +2,7 @@
 	"use strict";
 
 	angular
-		.module("app.hunters")
+		.module("app.hunter")
 		.controller("HunterInfoController", HunterInfoController);
 
 	HunterInfoController.$inject = ["$q", "dataService", "hunter", ];
