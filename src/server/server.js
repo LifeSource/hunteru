@@ -5,6 +5,7 @@ var app = express();
 
 // setup the database with seed data
 require("./config/mongoose")(config);
+var env = config.env;
 
 // setup RESTFUL api
 var hunterApi = require("./api/hunter.api")(app);
