@@ -10,16 +10,16 @@ conjuration = #fcfc37
 manipulation = #842aa9
 specialization = #de64e6
 
+body
+    font-family "Open Sans", sans-serif
+
 h1, h2, h3, h4, h5, h6
 	padding 0
 	margin 0
 
-header
-	height 70px
-	background #555
-
-header h1
-	display inline
+a, a:link, a:visited, a:hover, a:active
+    color #555
+    text-decoration none
 
 header a,
 header a:link,
@@ -28,22 +28,11 @@ header a:hover,
 header a:active
 	color #eee
 	text-decoration none
-	
-footer
-	clear both
-	color #eee
-	background #555
-	text-align center
-	
-.htr-main-heading
-	padding 10px 20px
-	color #eee
-	
-.htr-nav-list
-	padding 0
-	margin 0
-	list-style none
 
+.htr-main-heading
+	color #eee
+	padding 10px 20px
+	
 .htr-nav-list li
 	float left
 	display inline
@@ -90,26 +79,48 @@ footer
 	text-align center
 	margin-right 20px
 	
-.htr-abilities
-	margin 0
-	padding 0
-	list-style none
-	
-.htr-abilities li
-	margin 0
-	padding 10px 0
-	list-style-type none
-	
-.htr-nen-type
-	margin 0 auto	
-	
-.htr-nen
-	position relative
-	top 50px
-
-.panel.panel-default 
-	margin-top 20px
-	
 .htr-hunter-card.ng-enter,
 .htr-hunter-card.ng-move
 	transition 0.5s linear all
+
+.content-only
+    margin 0
+    padding 0
+
+.add-token
+    margin 20px
+    width 120px
+    height 120px
+    display inline-block
+
+.add-token i
+    position relative
+    color green
+    top 20px
+    left 30px
+    padding 0
+    margin 0 auto
+    font-size 80px
+
+.profile    
+    margin 50px
+
+.profile-image
+    float left
+    margin-right 40px
+
+.profile-heading
+    font-size 5em
+    font-family Impact
+    text-shadow #eee 5px 0.1em
+
+.profile-details
+    float left
+
+.profile-info
+    margin-top 50px
+    margin-left 20px
+    padding-left 50px
+
+.background
+    float left

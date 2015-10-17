@@ -188,7 +188,7 @@
 
 		{
 			name: {
-				first: "Issac",
+				first: "Isaac",
 				last: "Netero"
 			},
 			gender: "Male",

@@ -11,8 +11,7 @@
 		var vm = this;
 
 		vm.navLinks = [
-			{ label: "Hunter List", state: "newHunter", icon: "fa-plus" },
-			{ label: "Add", state: "newHunter", icon: "fa-plus" },
+			{ label: "Hunter List", state: "home", icon: "fa-plus" },
 			{ label: "About", state: "newHunter", icon: "fa-plus" }
 		];
 	}

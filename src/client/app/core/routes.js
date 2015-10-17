@@ -26,22 +26,16 @@
 				controllerAs: "vm"
 			})
 			.state("newHunter", {
-				url: "/hunters/new",
+				url: "/hunters/new/:id",
 				templateUrl: "app/hunter/hunterEdit.html",
 				controller: "HunterEditController",
 				controllerAs: "vm"	
 			})
 			.state("info", {
-				url: "/hunters/:hunterId",
+				url: "/hunters/:id",
 				templateUrl: "app/hunter/hunterInfoView.html",
-				controller: "HunterInfoController as vm",
-				resolve: {
-					hunterService: "hunterService",
-					hunter: function(hunterService, $stateParams) {
-						var hunterId = $stateParams.hunterId;
-						return hunterService.get(hunterId);
-					}
-				}
+				controller: "HunterInfoController",
+				controllerAs: "vm"
 			});			
 	}
 	

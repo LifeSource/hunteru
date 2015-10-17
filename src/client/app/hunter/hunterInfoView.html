@@ -1,46 +1,21 @@
-<div class="container">
-	<div class="panel panel-primary">
-		<div class="panel-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</div>
-		<div class="panel-body">
-			<div class="row">
-				<div class="col-md-3">
-					<img data-ng-src="images/thumbnail/{{ vm.hunter.name.first }}.png" alt="">
-					<div>
-						<strong>Name:</strong>
-						<span>{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</span>
-						<br />
-						<strong>Aage:</strong>
-						<span>{{ vm.hunter.age }}</span>
-						<br />
-						<strong>Gender:</strong>
-						<span>{{ vm.hunter.gender }}</span>
-						<br />
-						<strong>Occupation:</strong>
-						<span>{{ vm.hunter.occupation[0] }}</span>
-					</div>
-				</div>
-				<div class="col-md-5">
-					<h4 class="sub-heading">Background</h4>
-					<br />
-					<p>{{ vm.hunter.bio }}</p>
-				</div>
-				<div class="col-md-4">
-					<h4 class="sub-heading">Abilities</h4>
-					<br />
-					<ul class="htr-abilities">
-						<li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
-					</ul>
-				</div>
-			</div>
-			<div class="row col-md-offset-1">
-				<div class="htr-nen-type">
-					<ul class="htr-nen-list">
-						<li data-ng-repeat="nen in vm.nenTypes">
-							<p class="htr-nen">{{ nen }}</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="profile">
+    <div class="profile-image">
+        <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
+    </div>
+
+    <div class="profile-details">
+        <h1 class="profile-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</h1>
+        <div class="nenChart">
+            <canvas id="nen" width="400" height="400"> </canvas>
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="profile-info">
+            <h4>Age: {{ vm.hunter.age }}</h4>
+            <h4>Hunter Type: {{ vm.hunter.occupation[0] }}</h4>
+        </div>
+        {{ vm.hunter.bio }} 
+    </div>
+
 </div>
