@@ -3,19 +3,21 @@
         <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
     </div>
 
-    <div class="profile-details">
-        <h1 class="profile-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</h1>
-        <div class="nenChart">
-            <canvas id="nen" width="400" height="400"> </canvas>
+    <h1 class="profile-heading">
+        {{ vm.hunter.name.first }} {{ vm.hunter.name.last }}
+    </h1>
+    <div class="background">
+        <h4>{{ vm.hunter.gender }}, {{ vm.hunter.occupation[0] }}</h4>
+        <div class="bio">
+            <p> "{{ vm.hunter.bio }}" </p>
         </div>
     </div>
 
-    <div class="background">
-        <div class="profile-info">
-            <h4>Age: {{ vm.hunter.age }}</h4>
-            <h4>Hunter Type: {{ vm.hunter.occupation[0] }}</h4>
-        </div>
-        {{ vm.hunter.bio }} 
+    <div class="profile-details">
+    </div>
+
+    <div class="nenChart">
+        <canvas id="nen" width="400" height="400"> </canvas>
     </div>
 
 </div>

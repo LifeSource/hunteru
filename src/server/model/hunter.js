@@ -9,8 +9,13 @@ var hunterSchema = new Schema({
 	age: Number,
 	gender: String,
 	nen: [String],
+	nenData: [Number],
 	occupation: [String],
 	abilities: [String]
 });
+
+hunterSchema.methods.fullName = function () {
+    return this.name.first + " " + this.name.last;
+};
 
 module.exports = mongoose.model("Hunter", hunterSchema);

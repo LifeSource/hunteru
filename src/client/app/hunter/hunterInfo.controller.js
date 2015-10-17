@@ -12,8 +12,6 @@
         var vm = this;
         vm.nenTypes = [];
 
-
-
         activate();
 
         function activate() {
@@ -23,10 +21,10 @@
 
             $q.all(promises).then(function() {
                 toastr.info("Hunter info view activated");
+                var ctx = document.getElementById("nen").getContext("2d");
+                var nenChart = new Chart(ctx).Radar(getData(), getOptions());
             });
 
-            var ctx = document.getElementById("nen").getContext("2d");
-            var nenChart = new Chart(ctx).Radar(getData(), getOptions());
         }
 
         function getHunter(id) {
@@ -55,7 +53,7 @@
 
         function getData() {
             var data = {
-                labels: ["Reinforcement", "Transformation", "Materialization", "Specialization", "Manipulation", "Emission"],
+                labels: ["Enhancer", "Transmutter", "Conjurer", "Specialist", "Manipulator", "Emitter"],
                 datasets: [{
                     fillColor: "rgba(58,141,224,0.4)",
                     strokeColor: "rgba(20,220,220,1)",
@@ -63,7 +61,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    data: [100, 20, 10, 85, 30, 55]
+                    data: vm.hunter.nenData
                 }]
             };
            
