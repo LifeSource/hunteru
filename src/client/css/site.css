@@ -36,13 +36,14 @@ header a:active {
   margin-right: 20px;
   font-size: 20px;
 }
+.no-style,
 .htr-hunter-list {
   list-style: none;
 }
 .htr-hunter-list li {
-  list-style-type: none;
-  display: inline;
   float: left;
+  display: inline;
+  list-style-type: none;
 }
 .htr-hunter-card {
   margin: 20px;
@@ -105,17 +106,21 @@ header a:active {
   font-family: Impact;
   text-shadow: #eee 5px 0.1em;
 }
-.profile-details {
-  float: left;
-}
 .background {
   float: left;
-  width: 540px;
+  width: 500px;
   font-style: italic;
   margin-right: 50px;
 }
 .bio {
   margin-top: 20px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-family: "Open Sans";
+}
+.abilities {
+  float: right;
+  margin-top: 10px;
+}
+.ab-list {
+  font-size: 1.3em;
 }

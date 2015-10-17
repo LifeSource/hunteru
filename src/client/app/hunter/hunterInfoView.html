@@ -8,12 +8,18 @@
     </h1>
     <div class="background">
         <h4>{{ vm.hunter.gender }}, {{ vm.hunter.occupation[0] }}</h4>
+
         <div class="bio">
             <p> "{{ vm.hunter.bio }}" </p>
         </div>
-    </div>
 
-    <div class="profile-details">
+        <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
+            <h3>Abilities</h3>
+            <ul class="no-style content-only ab-list">
+                <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
+            </ul>
+        </div>
+            
     </div>
 
     <div class="nenChart">
