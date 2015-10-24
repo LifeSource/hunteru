@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="col-md-12">
+	<div class="col-md-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				{{ vm.title }}
@@ -9,9 +9,9 @@
 					<div class="form-group" data-ng-class="{ 'has-error' : hunterEdit.firstName.$invalid && hunterEdit.firstName.$dirty }">
 						<label for="firstName" class="col-md-3 control-label">First Name:</label>
 						<div class="col-md-6">
-							<input data-ng-model="vm.hunter.firstName" required
-								name="firstName" 
-								type="text" class="form-control" 
+							<input data-ng-model="vm.hunter.name.first" required
+								name="firstName"
+								type="text" class="form-control"
 								placeholder="First name (required)">
 						</div>
 						<span class="help-block has-error"
@@ -22,15 +22,15 @@
 					<div class="form-group">
 						<label for="lastName" class="col-md-3 control-label">Last Name:</label>
 						<div class="col-md-6">
-							<input data-ng-model="vm.hunter.lastName" name="lastName" 
-								type="text" class="form-control" 
+							<input data-ng-model="vm.hunter.name.last" name="lastName"
+								type="text" class="form-control"
 								placeholder="Last name">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="age" class="col-md-3 control-label">Age:</label>
 						<div class="col-md-3">
-							<input data-ng-model="vm.hunter.age" name="age" 
+							<input data-ng-model="vm.hunter.age" name="age"
 								type="number" step="1" min="1" class="form-control" placeholder="age">
 						</div>
 					</div>
@@ -43,30 +43,44 @@
 							</label>
 							<label for="female" class="checkbox-inline">
 								<input data-ng-model="vm.hunter.gender"
-									type="radio" name="female" value="female""> Female
+									type="radio" name="female" value="female"> Female
 							</label>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="nenType" class="col-md-3 control-label">Nen Type:</label>
-						<div class="col-md-6">
-							<select name="nenType" id="nen" class="form-control" data-ng-model="vm.hunter.nenType" data-ng-options="nen for nen in vm.nenTypes">
+						<div class="col-md-4">
+							<select name="nenType" id="nen" class="form-control"
+								data-ng-model="vm.nenType"
+								data-ng-change="vm.addNen(vm.nenType)"
+								data-ng-options="nen for nen in vm.nenTypes">
 								<option value="">Please select...</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="occupation" class="col-md-3 control-label">Occupation:</label>
-						<div class="col-md-6">
-							<select name="occupation" id="nen" class="form-control" data-ng-model="vm.hunter.occupation" data-ng-options="occ.name for occ in vm.occupations">
+						<div class="col-md-4">
+							<select name="occupation" id="occupation" class="form-control"
+								data-ng-model="vm.occupation"
+								data-ng-change="vm.addOccupation(vm.occupation)"
+								data-ng-options="occ for occ in vm.occupations">
 								<option value="">Please select...</option>
 							</select>
 						</div>
 					</div>
+
+                    <div class="form-group">
+                        <label class="col-md-3 control-label" for="bio">Bio:</label>
+                        <div class="col-md-6">
+                            <textarea data-ng-model="vm.hunter.bio" class="form-control" id="bio" name="bio" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+
 				</form>
 			</div>
 			<div class="panel-footer">
-				<button class="btn btn-success pull-right" 
+				<button class="btn btn-success pull-right"
 					data-ng-click="vm.submit(hunterEdit.$valid)">Save</button>
 				<button class="btn btn-default" data-ng-click="vm.cancel()">
 					<i class="fa fa-chevron-left"></i>
@@ -76,8 +90,13 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-md-6">
+		<img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="hunter profile image" />
+
+	</div>
+
+	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				Hunter Data - JSON
@@ -86,11 +105,5 @@
 				<pre>{{ vm.hunter | json }}</pre>
 			</div>
 		</div>
-	</div>
-	
-	<div class="row">
-		<pre>
-			{{ hunterEdit | json }}
-		</pre>
 	</div>
 </div>

@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
-var Hunter = require("../model/hunter"),
-	seedData = require("../model/seedData");
+var Hunter = require("../models/hunter"),
+	seedData = require("../models/seedData");
 	
 module.exports = function(config) {
 	

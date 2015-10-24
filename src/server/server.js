@@ -1,4 +1,5 @@
 var express = require("express"),
+    bodyParser = require("body-parser"),
     config = require("../../config")();
 
 var app = express();
@@ -7,12 +8,16 @@ var app = express();
 require("./config/mongoose")(config);
 var environment = config.env;
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // setup RESTFUL api
-var hunterApi = require("./api/hunter.api")(app);
-var data = require("./api/data")(app);
+var data = require("./api/data")();
+var hunterRouter = require("./api/hunter.api")();
 
 app.get("/api/nenTypes", data.getNenTypes);
 app.get("/api/occupations", data.getOccupations);
+app.use("/api/hunters/", hunterRouter);
 
 switch (environment) {
     case "production":

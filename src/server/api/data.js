@@ -1,4 +1,4 @@
-module.exports = function (app) {
+module.exports = function () {
 
 	var data = {
 		getNenTypes: getNenTypes,
@@ -8,34 +8,36 @@ module.exports = function (app) {
 	return data;
 
 	function getNenTypes(req, res) {
-		res.json(["Enhancement", "Transmission", "Manipulation", "Conjuration", "Specialization"]);
+		res.json(["Enhancer", "Transmutter", "Conjurer", "Specialist", "Manipulator", "Emitter"]);
 	}
 
 	function getOccupations(req, res) {
 		res.json([
-			{ name: "Archaeological" },
-			{ name: "Beast" },
-			{ name: "Blacklist" },
-			{ name: "Botanical" },
-			{ name: "Contract" },
-			{ name: "Crime" },
-			{ name: "D" },
-			{ name: "Gourmet" },
-			{ name: "Head" },
-			{ name: "Information" },
-			{ name: "Jackpot" },
-			{ name: "Lost" },
-			{ name: "Music" },
-			{ name: "Paleograph" },
-			{ name: "Poison" },
-			{ name: "Poacher" },
-			{ name: "Deep Sea" },
-			{ name: "Temp" },
-			{ name: "Terrorist" },
-			{ name: "Treasure" },
-			{ name: "Trouble" },
-			{ name: "Virus" },
-			{ name: "Youth and Beauty" }
+			"Archaeological",
+			"Assassin",
+			"Beast",
+			"Blacklist",
+			"Botanical",
+			"Contract",
+			"Crime",
+			"D",
+			"Gourmet",
+			"Hacker",
+			"Head",
+			"Information",
+			"Jackpot",
+			"Lost",
+			"Music",
+			"Paleograph",
+			"Poison",
+			"Poacher",
+			"Deep Sea",
+			"Temp",
+			"Terrorist",
+			"Treasure",
+			"Trouble",
+			"Virus",
+			"Youth and Beauty"
 		]);
 	}
 };

@@ -11,7 +11,8 @@ var hunterSchema = new Schema({
 	nen: [String],
 	nenData: [Number],
 	occupation: [String],
-	abilities: [String]
+	abilities: [String],
+	bio: String
 });
 
 hunterSchema.methods.fullName = function () {
