@@ -7,7 +7,7 @@ module.exports = function(config) {
 	
 	switch (config.env) {
 	    case 'production':
-            mongoose.connect("mongodb://gon:#hyegyo86kW@ds037234.mongolab.com:37234/hunteru");
+            mongoose.connect("mongodb://gon:#hyegyo86kW@ds045064.mongolab.com:45064/hunteru");
 	        break;
 	    default:
 	        mongoose.connect("mongodb://localhost/hunteru");
