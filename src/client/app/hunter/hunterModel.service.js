@@ -14,7 +14,7 @@
                 last: null,
             },
             age: 0,
-            gender: null,
+            gender: "Male",
             nen: [],
             nenData: [0, 0, 0, 0, 0, 0],
             occupation: [],

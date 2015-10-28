@@ -14,12 +14,10 @@
         activate();
 
         function activate() {
-           var promises = [getAllHunters()]; 
+            var promises = [getAllHunters()];
 
-           $q.all(promises)
-               .then(function () {
-                   toastr.info("Hunter list view activated");
-               });
+            $q.all(promises)
+                .then(function() {});
         }
 
         function getAllHunters() {
@@ -37,7 +35,9 @@
         }
 
         function addHunter() {
-            $state.go("newHunter", { id: -1 });
+            $state.go("newHunter", {
+                id: -1
+            });
         }
     }
 

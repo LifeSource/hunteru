@@ -32,7 +32,7 @@
 				controllerAs: "vm"	
 			})
 			.state("info", {
-				url: "/hunters/:id",
+				url: "/hunters/info/:id",
 				templateUrl: "app/hunter/hunterInfoView.html",
 				controller: "HunterInfoController",
 				controllerAs: "vm"

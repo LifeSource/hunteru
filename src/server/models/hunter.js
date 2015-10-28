@@ -9,7 +9,10 @@ var hunterSchema = new Schema({
 	age: Number,
 	gender: String,
 	nen: [String],
-	nenData: [Number],
+	nenData: {
+        type: [Number],
+        default: 0
+    },
 	occupation: [String],
 	abilities: [String],
 	bio: String

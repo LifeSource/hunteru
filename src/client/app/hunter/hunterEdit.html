@@ -1,109 +1,156 @@
-<div class="container">
-	<div class="col-md-6">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				{{ vm.title }}
-			</div>
-			<div class="panel-body">
-				<form novalidate name="hunterEdit" class="form-horizontal">
-					<div class="form-group" data-ng-class="{ 'has-error' : hunterEdit.firstName.$invalid && hunterEdit.firstName.$dirty }">
-						<label for="firstName" class="col-md-3 control-label">First Name:</label>
-						<div class="col-md-6">
-							<input data-ng-model="vm.hunter.name.first" required
-								name="firstName"
-								type="text" class="form-control"
-								placeholder="First name (required)">
-						</div>
-						<span class="help-block has-error"
-							data-ng-show="hunterEdit.firstName.$invalid && hunterEdit.firstName.$dirty">
-							First name is required.
-						</span>
-					</div>
-					<div class="form-group">
-						<label for="lastName" class="col-md-3 control-label">Last Name:</label>
-						<div class="col-md-6">
-							<input data-ng-model="vm.hunter.name.last" name="lastName"
-								type="text" class="form-control"
-								placeholder="Last name">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="age" class="col-md-3 control-label">Age:</label>
-						<div class="col-md-3">
-							<input data-ng-model="vm.hunter.age" name="age"
-								type="number" step="1" min="1" class="form-control" placeholder="age">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="gender" class="col-md-3 control-label">Gender:</label>
-						<div class="col-md-6">
-							<label for="male" class="checkbox-inline">
-								<input data-ng-model="vm.hunter.gender"
-									type="radio" name="male" value="male"> Male
-							</label>
-							<label for="female" class="checkbox-inline">
-								<input data-ng-model="vm.hunter.gender"
-									type="radio" name="female" value="female"> Female
-							</label>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="nenType" class="col-md-3 control-label">Nen Type:</label>
-						<div class="col-md-4">
-							<select name="nenType" id="nen" class="form-control"
-								data-ng-model="vm.nenType"
-								data-ng-change="vm.addNen(vm.nenType)"
-								data-ng-options="nen for nen in vm.nenTypes">
-								<option value="">Please select...</option>
-							</select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="occupation" class="col-md-3 control-label">Occupation:</label>
-						<div class="col-md-4">
-							<select name="occupation" id="occupation" class="form-control"
-								data-ng-model="vm.occupation"
-								data-ng-change="vm.addOccupation(vm.occupation)"
-								data-ng-options="occ for occ in vm.occupations">
-								<option value="">Please select...</option>
-							</select>
-						</div>
-					</div>
+<div class="htr-container">
 
+    <div class="panel panel-default">
+        <div class="panel-heading">Edit</div>
+        <div class="panel-body">
+
+            <form novalidate name="hunterEditForm" class="form-horizontal">
+
+                <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-md-3 control-label" for="bio">Bio:</label>
-                        <div class="col-md-6">
-                            <textarea data-ng-model="vm.hunter.bio" class="form-control" id="bio" name="bio" cols="30" rows="10"></textarea>
+                        <label class="control-label col-md-2" for="firstName">First name:</label>
+                        <div class="col-md-4">
+                            <input data-ng-model="vm.hunter.name.first" id="firstName" type="text" name="firstName" class="form-control">
                         </div>
                     </div>
 
-				</form>
-			</div>
-			<div class="panel-footer">
-				<button class="btn btn-success pull-right"
-					data-ng-click="vm.submit(hunterEdit.$valid)">Save</button>
-				<button class="btn btn-default" data-ng-click="vm.cancel()">
-					<i class="fa fa-chevron-left"></i>
-					Cancel
-				</button>
-				<button class="btn btn-default" data-ng-click="vm.clear()">Clear</button>
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="lastName">Last name:</label>
+                        <div class="col-md-4">
+                            <input data-ng-model="vm.hunter.name.last" id="lastName" type="text" name="lastName" class="form-control">
+                        </div>
+                    </div>
 
-	<div class="col-md-6">
-		<img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="hunter profile image" />
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="age">Age:</label>
+                        <div class="col-md-4">
+                            <input data-ng-model="vm.hunter.age" id="age" type="text" name="age" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="gender">Gender:</label>
+                        <div class="col-md-4">
+                            <label class="checkbox-inline" for="male">
+                                <input id="male" type="radio" name="male" value="Male"  data-ng-model="vm.hunter.gender"> Male
+                            </label>
 
-	</div>
+                            <label class="checkbox-inline" for="female">
+                                <input id="female" type="radio" name="female" value="Female" data-ng-model="vm.hunter.gender"> Female
+                            </label>
+                        </div>
+                    </div>
 
-	<div class="col-md-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				Hunter Data - JSON
-			</div>
-			<div class="panel-body">
-				<pre>{{ vm.hunter | json }}</pre>
-			</div>
-		</div>
-	</div>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="occupation">Occupation:</label>
+                        <div class="col-md-6">
+                            <select name="occupation" class="form-control"
+                                data-ng-change="vm.addOccupation(vm.hunter.occupation)"
+                                data-ng-model="vm.hunter.occupation"
+                                data-ng-options="occ for occ in vm.occupations">
+                                <option value="">Please select one...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="bio">Biography:</label>
+                        <div class="col-md-6"><textarea id="bio" class="form-control" name="bio" cols="30" rows="10" data-ng-model="vm.hunter.bio"></textarea></div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="nen">Nen Type:</label>
+                        <div class="col-md-6">
+                            <select name="nen" class="form-control"
+                                data-ng-change="vm.addNen(vm.nen)"
+                                data-ng-options="nen for nen in vm.nenTypes"
+                                data-ng-model="vm.nen">
+                                <option value="">Please select one...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="nenData">Nen Data:</label>
+                        <div class="col-md-4">
+                            <ul>
+                                <li data-ng-repeat="nen in vm.nenTypes track by $index">
+                                    {{ nen }} <input type="range" name="nenType" id="nenType" min="0" max="100" value="{{nd}}" data-ng-model="vm.hunter.nenData[$index]">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="abilities">Abilities:</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control col-md-2" data-ng-model="vm.ability">
+                        </div>
+                        <button class="btn btn-success" data-ng-click="vm.addAbility(vm.ability)">Add</button>
+                        <ul data-ng-if="vm.hunter.abilities.length > 0">
+                            <li data-ng-repeat="ability in vm.hunter.abilities">{{ ability }}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-default" data-ng-click="vm.cancel()">Back</button>
+            <button class="btn btn-success pull-right">Save</button>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">{{ vm.hunter.name.first }}'s JSON Data</div>
+            <div class="panel-body">
+                <pre>
+                    {{ vm.hunter | json }}
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</div>
+            <div class="panel-body">
+    <div class="profile">
+        <div class="profile-image">
+            <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
+        </div>
+
+        <div>
+            <div>
+                <h1 class="profile-heading"> {{ vm.hunter.name.first }} {{ vm.hunter.name.last }} </h1>
+            </div>
+        </div>
+
+        <div class="background">
+            <h4>{{ vm.hunter.gender }}, {{ vm.hunter.age }}, {{ vm.hunter.occupation[0] }} Hunter</h4>
+
+            <div class="bio">
+                <p> "{{ vm.hunter.bio }}" </p>
+            </div>
+
+            <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
+                <h3 class="sub-heading">Abilities</h3>
+                <ul class="no-style content-only ab-list">
+                    <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="nenChart">
+            <canvas id="nen" width="400" height="400"> </canvas>
+        </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>

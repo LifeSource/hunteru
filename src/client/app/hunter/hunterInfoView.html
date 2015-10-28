@@ -1,29 +1,37 @@
-<div class="profile">
-    <div class="profile-image">
-        <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
-    </div>
-
-    <h1 class="profile-heading">
-        {{ vm.hunter.name.first }} {{ vm.hunter.name.last }}
-    </h1>
-    <div class="background">
-        <h4>{{ vm.hunter.gender }}, {{ vm.hunter.age }}, {{ vm.hunter.occupation[0] }} Hunter</h4>
-
-        <div class="bio">
-            <p> "{{ vm.hunter.bio }}" </p>
+<div class="htr-container">
+    <div class="profile">
+        <div class="profile-image">
+            <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
         </div>
 
-        <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
-            <h3>Abilities</h3>
-            <ul class="no-style content-only ab-list">
-                <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
-            </ul>
-        </div>
+        <div>
+            <div>
+                <h1 class="profile-heading"> {{ vm.hunter.name.first }} {{ vm.hunter.name.last }} </h1>
+                
+            </div>
             
-    </div>
 
-    <div class="nenChart">
-        <canvas id="nen" width="400" height="400"> </canvas>
-    </div>
+        </div>
 
+        <div class="background">
+            <h4>{{ vm.hunter.gender }}, {{ vm.hunter.age }}, {{ vm.hunter.occupation[0] }} Hunter</h4>
+
+            <div class="bio">
+                <p> "{{ vm.hunter.bio }}" </p>
+            </div>
+
+            <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
+                <h3 class="sub-heading">Abilities</h3>
+                <ul class="no-style content-only ab-list">
+                    <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="nenChart">
+            <canvas id="nen" width="400" height="400"> </canvas>
+        </div>
+
+    </div>
 </div>
