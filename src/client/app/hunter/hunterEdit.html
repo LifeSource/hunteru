@@ -1,17 +1,21 @@
 <div class="htr-container">
 
     <div class="panel panel-default">
-        <div class="panel-heading">Edit</div>
+        <div class="panel-heading">{{ vm.title }}</div>
         <div class="panel-body">
 
             <form novalidate name="hunterEditForm" class="form-horizontal">
 
                 <div class="col-md-6">
-                    <div class="form-group">
+                    <div class="form-group" data-ng-class="{ 'has-error': hunterEditForm.firstName.$invalid && hunterEditForm.firstName.$dirty }">
                         <label class="control-label col-md-2" for="firstName">First name:</label>
                         <div class="col-md-4">
-                            <input data-ng-model="vm.hunter.name.first" id="firstName" type="text" name="firstName" class="form-control">
+                            <input required data-ng-model="vm.hunter.name.first" id="firstName" type="text" name="firstName" class="form-control">
                         </div>
+                        <span class="help-block has-error"
+                            data-ng-if="hunterEditForm.firstName.$invalid && hunterEditForm.firstName.$dirty">
+                            First name is a required field.
+                        </span>
                     </div>
 
                     <div class="form-group">
@@ -31,7 +35,7 @@
                         <label class="control-label col-md-2" for="gender">Gender:</label>
                         <div class="col-md-4">
                             <label class="checkbox-inline" for="male">
-                                <input id="male" type="radio" name="male" value="Male"  data-ng-model="vm.hunter.gender"> Male
+                                <input id="male" type="radio" name="male" value="Male" data-ng-model="vm.hunter.gender"> Male
                             </label>
 
                             <label class="checkbox-inline" for="female">
@@ -43,10 +47,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="occupation">Occupation:</label>
                         <div class="col-md-6">
-                            <select name="occupation" class="form-control"
-                                data-ng-change="vm.addOccupation(vm.hunter.occupation)"
-                                data-ng-model="vm.hunter.occupation"
-                                data-ng-options="occ for occ in vm.occupations">
+                            <select name="occupation" class="form-control" data-ng-change="vm.addOccupation(vm.occupation)" data-ng-model="vm.occupation" data-ng-options="occ for occ in vm.occupations">
                                 <option value="">Please select one...</option>
                             </select>
                         </div>
@@ -54,7 +55,9 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-2" for="bio">Biography:</label>
-                        <div class="col-md-6"><textarea id="bio" class="form-control" name="bio" cols="30" rows="10" data-ng-model="vm.hunter.bio"></textarea></div>
+                        <div class="col-md-6">
+                            <textarea id="bio" class="form-control" name="bio" cols="30" rows="10" data-ng-model="vm.hunter.bio"></textarea>
+                        </div>
                     </div>
 
                 </div>
@@ -63,10 +66,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="nen">Nen Type:</label>
                         <div class="col-md-6">
-                            <select name="nen" class="form-control"
-                                data-ng-change="vm.addNen(vm.nen)"
-                                data-ng-options="nen for nen in vm.nenTypes"
-                                data-ng-model="vm.nen">
+                            <select name="nen" class="form-control" data-ng-change="vm.addNen(vm.nen)" data-ng-options="nen for nen in vm.nenTypes" data-ng-model="vm.nen">
                                 <option value="">Please select one...</option>
                             </select>
                         </div>
@@ -77,7 +77,8 @@
                         <div class="col-md-4">
                             <ul>
                                 <li data-ng-repeat="nen in vm.nenTypes track by $index">
-                                    {{ nen }} <input type="range" name="nenType" id="nenType" min="0" max="100" value="{{nd}}" data-ng-model="vm.hunter.nenData[$index]">
+                                    {{ nen }}
+                                    <input type="range" name="nenType" id="nenType" min="0" max="100" value="{{nd}}" data-ng-model="vm.hunter.nenData[$index]">
                                 </li>
                             </ul>
                         </div>
@@ -99,7 +100,49 @@
         </div>
         <div class="panel-footer">
             <button class="btn btn-default" data-ng-click="vm.cancel()">Back</button>
-            <button class="btn btn-success pull-right">Save</button>
+            <button class="btn btn-success pull-right" data-ng-click="vm.submit(hunterEditForm.$valid)">Save</button>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</div>
+            <div class="panel-body">
+                <div class="profile">
+                    <div class="profile-image">
+                        <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
+                    </div>
+
+                    <div>
+                        <div>
+                            <h1 class="profile-heading"> {{ vm.hunter.name.first }} {{ vm.hunter.name.last }} </h1>
+                        </div>
+                    </div>
+
+                    <div class="background">
+                        <h4>{{ vm.hunter.gender }}, {{ vm.hunter.age }}, {{ vm.hunter.occupation[0] }} Hunter</h4>
+
+                        <div class="bio">
+                            <p> "{{ vm.hunter.bio }}" </p>
+                        </div>
+
+                        <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
+                            <h3 class="sub-heading">Abilities</h3>
+                            <ul class="no-style content-only ab-list">
+                                <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="nenChart">
+                        <canvas id="nen" width="400" height="400"> </canvas>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -113,44 +156,4 @@
             </div>
         </div>
     </div>
-
-    <div class="col-md-12">
-        <div class="panel panel-primary">
-            <div class="panel-heading">{{ vm.hunter.name.first }} {{ vm.hunter.name.last }}</div>
-            <div class="panel-body">
-    <div class="profile">
-        <div class="profile-image">
-            <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
-        </div>
-
-        <div>
-            <div>
-                <h1 class="profile-heading"> {{ vm.hunter.name.first }} {{ vm.hunter.name.last }} </h1>
-            </div>
-        </div>
-
-        <div class="background">
-            <h4>{{ vm.hunter.gender }}, {{ vm.hunter.age }}, {{ vm.hunter.occupation[0] }} Hunter</h4>
-
-            <div class="bio">
-                <p> "{{ vm.hunter.bio }}" </p>
-            </div>
-
-            <div class="abilities" data-ng-if="vm.hunter.abilities.length > 0">
-                <h3 class="sub-heading">Abilities</h3>
-                <ul class="no-style content-only ab-list">
-                    <li data-ng-repeat="ab in vm.hunter.abilities">{{ ab }}</li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="nenChart">
-            <canvas id="nen" width="400" height="400"> </canvas>
-        </div>
-
-            </div>
-        </div>
-    </div>
-
 </div>

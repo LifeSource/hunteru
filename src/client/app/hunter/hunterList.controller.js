@@ -17,7 +17,9 @@
             var promises = [getAllHunters()];
 
             $q.all(promises)
-                .then(function() {});
+                .then(function() {
+                    toastr.info("Hunter list view activated")
+                });
         }
 
         function getAllHunters() {
@@ -35,9 +37,7 @@
         }
 
         function addHunter() {
-            $state.go("newHunter", {
-                id: -1
-            });
+            $state.go("newHunter", { id: -1 });
         }
     }
 

@@ -10,7 +10,6 @@
 	function HunterEditController($q, $state, $stateParams, dataService, hunterService, hunter) {
 
 		var vm = this;
-		vm.title = "New";
         vm.hunter = hunter;
 		vm.clear = clear;
 		vm.cancel = goToListView;
@@ -23,7 +22,11 @@
 
 		function activate() {
 			var promises = [getNenTypes(), getOccupations()];
+			var hunterId = $stateParams.id;
+
+			console.log(hunterId);
 			$q.all(promises).then(function() {
+				vm.title = (hunterId === -1) ? "New" : "Edit";
 				var ctx = document.getElementById("nen").getContext("2d");
                 var nenChart = new Chart(ctx).Radar(getData(), getOptions());
 				toastr.info("Hunter Edit View activated");
@@ -52,6 +55,7 @@
 		}
 
 		function addAbility(ability) {
+			vm.ability = "";
 			vm.hunter.abilities.push(ability);
 		}
 
@@ -91,8 +95,7 @@
                     pointStrokeColor: "#fff",
                     pointHighlightFill: "#fff",
                     pointHighlightStroke: "rgba(220,220,220,1)",
-                    //data: vm.hunter.nenData
-                    data: [vm.hunter.nenData[0], vm.hunter.nenData[2],vm.hunter.nenData[1],vm.hunter.nenData[3],vm.hunter.nenData[4],vm.hunter.nenData[5]]
+                    data: vm.hunter.nenData
                 }]
             };
 
