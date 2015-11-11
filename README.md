@@ -6,8 +6,13 @@ Hunteru is an application built using the MEAN stack, there were two purposes in
  
  Prequisites:
 
-    My MongoDB is running local as a service on startup of my computer, you may not have this setup, therefore you need to make sure you have a local instance of MongoDB running. 
+Important: My MongoDB is running local as a service on startup of my computer, you may not have this setup, therefore you need to make sure you have a local instance of MongoDB running. 
  
+    - Node
+    - Express
+    - Bower
+    - Gulp
+
  Installtion:
 
     1. git clone https://github.com/lifesource/hunteru.git 
@@ -20,4 +25,4 @@ Hunteru is an application built using the MEAN stack, there were two purposes in
 
 # Copyright/Disclaimer:
 
-    This project contains images and assets that I do not own. The purpose of this project was for educational and personal use, all copyright materials and credits belongs to their respective copyright owners. 
+This project contains images and assets that I do not own. The purpose of this project was for educational and personal use, all copyright materials and credits belongs to their respective copyright owners. 
