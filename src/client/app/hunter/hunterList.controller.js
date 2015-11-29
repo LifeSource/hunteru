@@ -18,7 +18,7 @@
 
             $q.all(promises)
                 .then(function() {
-                    toastr.info("Hunter list view activated")
+                    toastr.info("Hunter list view activated");
                 });
         }
 

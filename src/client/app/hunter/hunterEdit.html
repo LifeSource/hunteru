@@ -90,7 +90,8 @@
                             <input type="text" class="form-control col-md-2" data-ng-model="vm.ability">
                         </div>
                         <button class="btn btn-success" data-ng-click="vm.addAbility(vm.ability)">Add</button>
-                        <ul data-ng-if="vm.hunter.abilities.length > 0">
+
+                        <ul class="abList" data-ng-if="vm.hunter.abilities.length > 0">
                             <li data-ng-repeat="ability in vm.hunter.abilities">{{ ability }}</li>
                         </ul>
                     </div>
