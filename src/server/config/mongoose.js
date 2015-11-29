@@ -2,10 +2,10 @@ var mongoose = require("mongoose");
 
 var Hunter = require("../models/hunter"),
 	seedData = require("../models/seedData");
-	
-module.exports = function(config) {
-	
-	switch (config.env) {
+
+module.exports = function(env) {
+
+	switch (env) {
 	    case 'production':
             mongoose.connect("mongodb://gon:#hyegyo86kW@ds045064.mongolab.com:45064/hunteru");
 	        break;
@@ -14,7 +14,7 @@ module.exports = function(config) {
 	        break;
 	}
 
-	var database = mongoose.connection;	
+	var database = mongoose.connection;
 
 	database.on("error", console.error.bind(console, "Connection error...."));
 	database.once("open", function(){
