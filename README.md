@@ -4,16 +4,18 @@ Hunteru is an application built using the MEAN stack, there were two purposes in
     1. To build something cool and challenging myself to learn CSS styling without bootstrap/other css frameworks.
     2. To reinforce what I learn about building application using the MEAN stack.
  
- Prequisites:
+#### Prequisites:
 
-Important: My MongoDB is running local as a service on startup of my computer, you may not have this setup, therefore you need to make sure you have a local instance of MongoDB running. 
- 
     - Node
     - Express
     - Bower
     - Gulp
 
- Installtion:
+#### Important:
+My MongoDB is running local as a service on startup of my computer, you may not have this setup, therefore you need to make sure you have a local instance of MongoDB running. 
+ 
+
+#### Installation:
 
     1. git clone https://github.com/lifesource/hunteru.git 
 
