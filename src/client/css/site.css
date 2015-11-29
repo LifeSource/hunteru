@@ -54,14 +54,14 @@ header a:active {
   border-radius: 60px;
   -webkit-perspective: 700;
           perspective: 700;
-  -webkit-transition: all 0.6s ease;
-          transition: all 0.6s ease;
+  -webkit-transition: all 0.8s ease;
+          transition: all 0.8s ease;
 }
 .htr-hunter-card img:hover {
-  opacity: 0.6;
-  border: 3px groove #f00;
-  -webkit-transform: rotateY(180deg);
-          transform: rotateY(180deg);
+  opacity: 0.8;
+  border: 3px groove #00f;
+  -webkit-transform: rotateZ(360deg);
+          transform: rotateZ(360deg);
 }
 .htr-hunter-card span {
   display: block;
@@ -72,8 +72,8 @@ header a:active {
 }
 .htr-hunter-card.ng-enter,
 .htr-hunter-card.ng-move {
-  -webkit-transition: 0.5s linear all;
-          transition: 0.5s linear all;
+  -webkit-transition: 0.8s linear all;
+          transition: 0.8s linear all;
 }
 .content-only {
   margin: 0;
