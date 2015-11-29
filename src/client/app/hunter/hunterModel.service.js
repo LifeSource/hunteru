@@ -3,26 +3,19 @@
 
     angular
         .module("app.hunter")
-        .factory("hunter", hunter);
+        .value("Hunter", Hunter);
 
-    hunter.$inject = [];
+    Hunter.$inject = [];
 
-    function hunter() {
-        var hunterModel = {
-            name: {
-                first: null,
-                last: null,
-            },
-            age: 0,
-            gender: "Male",
-            nen: [],
-            nenData: [0, 0, 0, 0, 0, 0],
-            occupation: [],
-            abilities: [],
-            bio: null
-        };
-
-        return hunterModel;
-    }
+    function Hunter() {
+        this.name =  { first: null, last: null, };
+        this.age = 0;
+        this.gender = "Male";
+        this.nen = [];
+        this.nenData = [0, 0, 0, 0, 0, 0],
+        this.occupation = [];
+        this.abilities = [];
+        this.bio = null;
+    };
 
 })();

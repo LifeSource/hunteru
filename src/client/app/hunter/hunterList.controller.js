@@ -23,7 +23,7 @@
         }
 
         function getAllHunters() {
-            hunterService.query()
+            return hunterService.query()
                 .then(success)
                 .catch(fail);
         }
@@ -37,7 +37,7 @@
         }
 
         function addHunter() {
-            $state.go("newHunter", { id: -1 });
+            $state.go("hunter");
         }
     }
 

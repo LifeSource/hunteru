@@ -5,13 +5,11 @@
 		.module("app.hunter")
 		.controller("HunterEditController", HunterEditController);
 
-	HunterEditController.$inject = ["$q", "$state", "$stateParams", "dataService", "hunterService", "hunter"];
+	HunterEditController.$inject = ["$q", "$state", "$stateParams", "dataService", "hunterService", "Hunter"];
 
-	function HunterEditController($q, $state, $stateParams, dataService, hunterService, hunter) {
+	function HunterEditController($q, $state, $stateParams, dataService, hunterService, Hunter) {
 
 		var vm = this;
-        vm.hunter = hunter;
-		vm.clear = clear;
 		vm.cancel = goToListView;
 		vm.submit = submit;
 		vm.addNen = addNen;
@@ -21,16 +19,36 @@
 		activate();
 
 		function activate() {
-			var promises = [getNenTypes(), getOccupations()];
-			var hunterId = $stateParams.id;
 
-			console.log(hunterId);
-			$q.all(promises).then(function() {
-				vm.title = (hunterId === -1) ? "New" : "Edit";
-				var ctx = document.getElementById("nen").getContext("2d");
-                var nenChart = new Chart(ctx).Radar(getData(), getOptions());
-				toastr.info("Hunter Edit View activated");
-			});
+			var hunterId = $stateParams.id;
+			var promises = [getNenTypes(), getOccupations()];
+
+			if (!hunterId) {
+				vm.hunter = new Hunter();
+				vm.title = (!hunterId) ? "New" : "Edit";
+			} else {
+				promises.push(getHunterById(hunterId));
+				$q.all(promises).then(function() {
+					var ctx = document.getElementById("nen").getContext("2d");
+	                var nenChart = new Chart(ctx).Radar(getData(), getOptions());
+					toastr.info("Hunter Edit View activated");
+				});
+			}
+		}
+
+		function getHunterById(id) {
+			return hunterService.get(id)
+				.then(onSuccess)
+				.catch(onFail);
+		}
+
+		function onSuccess(data) {
+			vm.hunter = data;
+			return data;
+		}
+
+		function onFail(reason) {
+			toastr.error(reason);
 		}
 
 		function getNenTypes() {
@@ -66,19 +84,28 @@
 
 		function submit(isValid) {
 			if (isValid) {
-                console.log("vm.hunter: ", vm.hunter);
-				hunterService.post(vm.hunter)
-					.then(function (response) {
-						toastr.success("Data submitted successfully! (HTTP status: " + response.status + ")");
-					    goToListView();
-					});
+				console.log("vm.hunter: ", vm.hunter);
+				if (!vm.hunter._id) {
+					hunterService.post(vm.hunter)
+						.then(onSaveSuccess)
+						.catch(fail);
+				} else {
+					hunterService.update(vm.hunter)
+						.then(onSaveSuccess)
+						.catch(fail);
+				}
 			} else {
 				toastr.error("The form contains invalid data. Please correct the data and try again.");
 			}
 		}
 
-		function clear() {
-			vm.hunter = {};
+		function onSaveSuccess(response) {
+			toastr.success("Data saved successfully! (HTTP status: " + response.status + ")");
+		    goToListView();
+		}
+
+		function fail(reason) {
+			toastr.error(reason);
 		}
 
 		function goToListView() {
@@ -108,10 +135,7 @@
                 scaleFontSize: 64,
                 pointLabelFontSize: 14
             };
-
             return options;
         }
-
-
 	}
 }());

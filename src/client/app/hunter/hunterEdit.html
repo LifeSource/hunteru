@@ -47,7 +47,8 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="occupation">Occupation:</label>
                         <div class="col-md-6">
-                            <select name="occupation" class="form-control" data-ng-change="vm.addOccupation(vm.occupation)" data-ng-model="vm.occupation" data-ng-options="occ for occ in vm.occupations">
+                            <select name="occupation" class="form-control"
+                                data-ng-change="vm.addOccupation(vm.occupation)" data-ng-model="vm.hunter.occupation[0]" data-ng-options="occ for occ in vm.occupations">
                                 <option value="">Please select one...</option>
                             </select>
                         </div>
@@ -66,7 +67,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-2" for="nen">Nen Type:</label>
                         <div class="col-md-6">
-                            <select name="nen" class="form-control" data-ng-change="vm.addNen(vm.nen)" data-ng-options="nen for nen in vm.nenTypes" data-ng-model="vm.nen">
+                            <select name="nen" class="form-control" data-ng-change="vm.addNen(vm.nen)" data-ng-options="nen for nen in vm.nenTypes" data-ng-model="vm.hunter.nen[0]">
                                 <option value="">Please select one...</option>
                             </select>
                         </div>

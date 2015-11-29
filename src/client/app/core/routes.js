@@ -1,17 +1,17 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts"/>
 (function () {
 	"use strict";
-	
+
 	angular
 		.module("app.core")
 		.config(routes);
-		
+
 	routes.$inject = ["$stateProvider", "$urlRouterProvider"];
-	
+
 	function routes($stateProvider, $urlRouterProvider) {
-		
+
 		$urlRouterProvider.otherwise("/");
-		
+
 		$stateProvider
 			.state("home", {
 				url: "/",
@@ -25,18 +25,18 @@
 				controller: "HunterListController",
 				controllerAs: "vm"
 			})
-			.state("newHunter", {
-				url: "/hunters/new/:id",
+			.state("hunter", {
+				url: "/hunters/:id",
 				templateUrl: "app/hunter/hunterEdit.html",
 				controller: "HunterEditController",
-				controllerAs: "vm"	
+				controllerAs: "vm"
 			})
 			.state("info", {
 				url: "/hunters/info/:id",
 				templateUrl: "app/hunter/hunterInfoView.html",
 				controller: "HunterInfoController",
 				controllerAs: "vm"
-			});			
+			});
 	}
-	
+
 })();

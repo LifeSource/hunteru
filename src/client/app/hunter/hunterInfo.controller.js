@@ -11,6 +11,8 @@
 
         var vm = this;
         vm.nenTypes = [];
+        vm.editHunter = editHunter;
+        vm.deleteHunter = deleteHunter;
 
         activate();
 
@@ -64,18 +66,37 @@
                     data: vm.hunter.nenData
                 }]
             };
-           
+
             return data;
         }
 
         function getOptions() {
-            
+
             var options = {
                 scaleFontSize: 64,
                 pointLabelFontSize: 14
             };
 
             return options;
+        }
+
+        function editHunter(id) {
+            $state.go("hunter", { id: id });
+        }
+
+        function deleteHunter(id) {
+            return hunterService.delete(id)
+                .then(onComplete)
+                .catch(onError);
+        }
+
+        function onComplete(response) {
+            toastr.success("Hunter removed successfully!");
+            $state.go("home");
+        }
+
+        function onError(reason) {
+            toastr.error(reason);
         }
     }
 

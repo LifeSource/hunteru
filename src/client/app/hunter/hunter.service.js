@@ -14,53 +14,52 @@
 			get: getHunter,
 			query: getHunters,
 			update: updateHunter,
-			remove: removeHunter
+			delete: removeHunter
 		};
 
 		return service;
 
 		function getHunter(hunterId) {
 			return $http.get(api + hunterId)
-			    .then(function(response){
-                    return response.data;
-                });
+			    .then(success)
+				.catch(fail);
             }
 
 		function getHunters() {
 			return $http.get(api)
-			    .then(function(response){
-                    return response.data;
-                })
+			    .then(success)
                 .catch(fail);
 		}
 
+		function success(response) {
+			return response.data;
+		}
+
         function fail(reason) {
-            toastr.err("Failed to retrieve hunters from server.", reason);
+            return reason;
         }
 
-		function addHunter(hunter) {
-		    console.log("Service (hunter): ", hunter);
-			return $http.post(api, hunter)
-				.then(function(response) {
-					return response.data;
-				})
-				.catch(onSaveFailed);
+		function returnResponseStatus(response) {
+			return response.status;
 		}
 
-		function onSaveFailed(response) {
-		    toastr.err("Failed to save hunter to server. (HTTP status: " + response.status + ")");
+		function addHunter(hunter) {
+			return $http.post(api, hunter)
+				.then(success)
+				.catch(fail);
 		}
+
 
 		function updateHunter(hunter) {
 			return $http.patch(api + hunter._id, hunter)
-				.then(function (response) {
-					return response.status;
-				})
-				.catch(onSaveFailed);
+				.then(returnResponseStatus)
+				.catch(fail);
 		}
 
 		function removeHunter(hunterId) {
-
+			return $http.delete(api + hunterId)
+				.then(returnResponseStatus)
+				.catch(fail);
 		}
 	}
 })();

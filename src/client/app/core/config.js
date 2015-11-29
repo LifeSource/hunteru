@@ -7,8 +7,7 @@
 		toastrConfig.$inject = ["toastr"];
 
 		function toastrConfig(toastr) {
-			toastr.options.timeOut = 3000; 
+			toastr.options.timeOut = 500; 
 			toastr.options.positionClass = "toast-bottom-right";
 		}
 })();
-

@@ -4,6 +4,10 @@
             <img data-ng-src="/images/full/{{ vm.hunter.name.first }}.png" alt="{{ vm.hunter.name.first }} image" />
         </div>
 
+            <div>
+                <button data-ng-click="vm.editHunter(vm.hunter._id)"class="btn btn-lg btn-primary">Edit</button>
+                <button data-ng-click="vm.deleteHunter(vm.hunter._id)"class="btn btn-lg btn-danger">Delete</button>
+            </div>
         <div>
             <h1 class="profile-heading"> {{ vm.hunter.name.first }} {{ vm.hunter.name.last }} </h1>
         </div>
