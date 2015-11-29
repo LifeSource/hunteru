@@ -15,21 +15,16 @@ module.exports = function() {
     return controller;
 
     function query(req, res) {
-        Hunter.find()
-            .exec(function(err, hunters) {
-                if (err) {
-                    res.status(500).send(err);
-                } else {
-                    res.json(hunters);
-                }
-            });
+        Hunter.find().exec(function(err, hunters) {
+            (err) ? res.send(err) : res.json(hunters);
+        });
     }
 
     function use(req, res, next) {
 
         Hunter.findById(req.params.id, function(err, hunter) {
             if (err) {
-                res.status(500).send(err);
+                res.send(err);
             } else if (hunter) {
                 req.hunter = hunter;
                 next();
@@ -45,14 +40,9 @@ module.exports = function() {
 
     function post(req, res) {
         var hunter = new Hunter(req.body);
-
-         hunter.save(function(err, hunter) {
-             if (err) {
-                 res.status(500).send(err);
-             } else {
-                 res.status(201).send(hunter);
-             }
-         });
+        hunter.save(function(err, hunter) {
+            (err) ? res.send(err) : res.status(201).send(hunter);
+        });
     }
 
     function put(req, res) {
@@ -64,11 +54,7 @@ module.exports = function() {
         req.hunter.abilities = req.body.abilities;
 
         req.hunter.save(function (err, hunter) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.json(req.hunter);
-            }
+            (err) ? res.send(err) : res.json(req.hunter);
         });
     }
 
@@ -82,21 +68,13 @@ module.exports = function() {
         }
 
         req.hunter.save(function(err) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.json(req.hunter);
-            }
+            (err) ? res.send(err) : res.json(req.hunter);
         });
     }
 
     function remove(req, res) {
         req.hunter.remove(function(err) {
-            if (err) {
-                res.status(500).send(err);
-            } else {
-                res.status(204).send("Removed");
-            }
+            (err) ? res.send(err) : res.status(204).send("Removed");
         });
     }
 };

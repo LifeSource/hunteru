@@ -5,9 +5,9 @@
         .module("app.hunter")
         .controller("HunterInfoController", HunterInfoController);
 
-    HunterInfoController.$inject = ["$q", "$state", "$stateParams", "dataService", "hunterService"];
+    HunterInfoController.$inject = ["$q", "$state", "$stateParams", "$uibModal", "dataService", "hunterService"];
 
-    function HunterInfoController($q, $state, $stateParams, dataService, hunterService) {
+    function HunterInfoController($q, $state, $stateParams, $uibModal, dataService, hunterService) {
 
         var vm = this;
         vm.nenTypes = [];
@@ -84,10 +84,32 @@
             $state.go("hunter", { id: id });
         }
 
-        function deleteHunter(id) {
-            return hunterService.delete(id)
-                .then(onComplete)
-                .catch(onError);
+        function deleteHunter() {
+            openDeleteModal("md");
+        }
+
+        function openDeleteModal(size) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: "app/core/modal.html",
+                controller: "ModalController as vm",
+                size: size,
+                resolve:  {
+                    hunter: function () {
+                        return vm.hunter;
+                    }
+                }
+            });
+
+            modalInstance.result
+                .then(function (hunter) {
+                    vm.hunter = hunter;
+                    return hunterService.delete(vm.hunter._id)
+                        .then(onComplete)
+                        .catch(onError);
+                }, function () {
+                    toastr.info("Delete operation cancelled!");
+                });
         }
 
         function onComplete(response) {

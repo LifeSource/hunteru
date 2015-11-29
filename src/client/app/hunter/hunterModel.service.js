@@ -12,10 +12,10 @@
         this.age = 0;
         this.gender = "Male";
         this.nen = [];
-        this.nenData = [0, 0, 0, 0, 0, 0],
+        this.nenData = [0, 0, 0, 0, 0, 0];
         this.occupation = [];
         this.abilities = [];
         this.bio = null;
-    };
+    }
 
 })();

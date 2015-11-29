@@ -25,10 +25,10 @@
 
 			if (!hunterId) {
 				vm.hunter = new Hunter();
-				vm.title = (!hunterId) ? "New" : "Edit";
 			} else {
 				promises.push(getHunterById(hunterId));
 				$q.all(promises).then(function() {
+					vm.title = (!hunterId) ? "New" : "Editing: " + vm.hunter.name.first;
 					var ctx = document.getElementById("nen").getContext("2d");
 	                var nenChart = new Chart(ctx).Radar(getData(), getOptions());
 					toastr.info("Hunter Edit View activated");
