@@ -1,0 +1,15 @@
+.htr-container {
+  margin: 0 auto;
+  max-width: 1366px;
+}
+.header img {
+  display: block;
+  margin: 10px auto;
+}
+footer {
+  clear: both;
+  color: #eee;
+  height: 80px;
+  background: #555;
+  text-align: center;
+}
