@@ -2,8 +2,6 @@ var gulp = require("gulp"),
     args = require("yargs").argv,
     del = require("del"),
     browserSync = require("browser-sync"),
-    path = require("path"),
-    runSequence = require("run-sequence"),
     $ = require("gulp-load-plugins")({lazy: true});
 
 var config = require("./config")();
@@ -156,7 +154,7 @@ gulp.task("serve-build", ["optimize"], function (isDev) {
     serve(false /* isDev */);
 });
 
-gulp.task("serve-dev", ["lint", "inject"], function () {
+gulp.task("serve-dev", ["inject"], function () {
     log("*** Serving up development environment");
     serve(true /* isDev */);
 });
